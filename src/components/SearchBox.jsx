@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import "../assets/css/searchbox.css"; // nhớ import file CSS
+import "../assets/css/SearchBox.css"; // nhớ import file CSS
 
 function SearchBox({ onSearch }) {
   const [text, setText] = useState("");

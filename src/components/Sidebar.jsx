@@ -20,8 +20,8 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="logo">
-        <span className="logo-icon">あ</span>
-        <span className="logo-text">mozii</span>
+        <span className="logo-icon">こ</span>
+        <span className="logo-text">koihi</span>
       </div>
 
       <ul className="menu">

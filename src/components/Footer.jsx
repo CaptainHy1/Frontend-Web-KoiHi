@@ -18,8 +18,8 @@ function Footer() {
       <div className="footer-container">
         {/* Cột 1 - Thông tin liên hệ */}
         <div className="footer-col">
-          <h3 className="logo">mazii</h3>
-          <p>Mazii - Bạn đồng hành tiếng Nhật tin cậy</p>
+          {/* <h3 className="logo">mazii</h3> */}
+          <p>Koihi - Bạn đồng hành tiếng Nhật tin cậy</p>
           <p>📍 315 Trường Chinh, Khương Mai, Thanh Xuân, Hà Nội</p>
           <p>📧 support@mazii.net</p>
           <p>📞 (+84) 37 773 8144</p>
