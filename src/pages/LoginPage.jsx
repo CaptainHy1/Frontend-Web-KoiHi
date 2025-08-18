@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "../assets/css/LoginPage.css";
-import Sidebar from "../components/Sidebar";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -14,18 +14,23 @@ function LoginPage() {
       return;
     }
     console.log("Email:", email, "Password:", password);
+    // TODO: gọi API login tại đây
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
         <h2>Đăng nhập với</h2>
+
+        {/* Nút social login */}
         <div className="social-login">
           <button className="google">Google</button>
           <button className="apple">Apple</button>
         </div>
+
         <p className="divider">hoặc dùng email và mật khẩu</p>
 
+        {/* Form login */}
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <FaEnvelope className="icon" />
@@ -48,7 +53,7 @@ function LoginPage() {
           </div>
 
           <div className="options">
-            <a href="#">Quên mật khẩu?</a>
+            <Link to="/forgot-password">Quên mật khẩu?</Link>
           </div>
 
           <button type="submit" className="login-btn">
@@ -57,7 +62,7 @@ function LoginPage() {
         </form>
 
         <p className="register">
-          Bạn chưa có tài khoản? <a href="#">Đăng ký</a>
+          Bạn chưa có tài khoản? <Link to="/register">Đăng ký</Link>
         </p>
       </div>
     </div>

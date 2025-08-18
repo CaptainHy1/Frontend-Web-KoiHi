@@ -1,0 +1,103 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+.register-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 380px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.register-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-login button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.social-login .google {
+  background: #db4437;
+  color: white;
+}
+
+.social-login .apple {
+  background: black;
+  color: white;
+}
+
+.divider {
+  margin: 15px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.input-group .icon {
+  margin-right: 10px;
+  color: #888;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 10px;
+  background: #1877f2;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background: #145db2;
+}
+
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #1877f2;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

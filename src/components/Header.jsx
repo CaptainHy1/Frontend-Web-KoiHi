@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBell, FaFire } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "../assets/css/Header.css";
 
 function Header() {
@@ -10,8 +11,12 @@ function Header() {
       </div>
 
       <div className="header-right">
-        <button className="btn login">Đăng nhập</button>
-        <button className="btn register">Đăng ký</button>
+        <Link to="/login" className="btn login">
+          Đăng nhập
+        </Link>
+        <Link to="/register" className="btn register">
+          Đăng ký
+        </Link>
 
         <div className="dropdown">
           <button className="flag-btn">🇻🇳</button>

@@ -32,9 +32,6 @@ function Sidebar() {
           <FaBook /> Dịch
         </li>
         <li>
-          <FaUsers /> Cộng đồng
-        </li>
-        <li>
           <FaClipboardList /> JLPT
         </li>
         <hr />
@@ -48,9 +45,6 @@ function Sidebar() {
           <FaClipboardList /> Thi thử
         </li>
         <li>
-          <FaLayerGroup /> Chuyên ngành
-        </li>
-        <li>
           <FaComments /> Dịch hội thoại
         </li>
         <li>
@@ -61,22 +55,10 @@ function Sidebar() {
         </li>
         <hr />
         <li>
-          <FaBriefcase /> Việc làm
-        </li>
-        <li>
           <FaInfoCircle /> Giới thiệu
         </li>
         <li>
-          <FaArrowUp /> Nâng cấp
-        </li>
-        <li>
           <FaCog /> Cài đặt
-        </li>
-        <li>
-          <FaBlog /> Blog
-        </li>
-        <li>
-          <FaLayerGroup /> Tiếp thị liên kết
         </li>
       </ul>
     </div>
