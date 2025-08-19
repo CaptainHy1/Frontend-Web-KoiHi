@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/Sidebar.css";
+import "./Sidebar.css";
 import {
   FaSearch,
   FaUsers,

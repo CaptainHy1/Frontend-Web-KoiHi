@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "../assets/css/LoginPage.css";
+import "./LoginPage.css";
 
 function LoginPage() {
   const [email, setEmail] = useState("");

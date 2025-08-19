@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
-import "../assets/css/RegisterPage.css";
+import "./RegisterPage.css";
 
 function RegisterPage() {
   const [name, setName] = useState("");

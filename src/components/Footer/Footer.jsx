@@ -10,7 +10,7 @@ import {
   FaChrome,
   FaFirefox,
 } from "react-icons/fa";
-import "../assets/css/Footer.css";
+import "./Footer.css"; // Import your CSS file
 
 function Footer() {
   return (

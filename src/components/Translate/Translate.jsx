@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../assets/css/Translate.css";
+import "./Translate.css";
 
 function TranslatePage() {
   const [sourceLang, setSourceLang] = useState("Japanese");

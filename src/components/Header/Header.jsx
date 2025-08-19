@@ -1,7 +1,7 @@
 import React from "react";
 import { FaBell, FaFire } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "../assets/css/Header.css";
+import "./Header.css"; // Import your CSS file
 
 function Header() {
   return (
