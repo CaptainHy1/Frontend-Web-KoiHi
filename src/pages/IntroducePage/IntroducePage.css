@@ -13,7 +13,6 @@
   top: 0;
   bottom: 0;
   width: 250px;
-  background: #38229c;
   color: #fff;
   padding: 20px;
 }
@@ -21,7 +20,6 @@
 /* Header */
 .introduce-page header {
   margin-left: 250px; /* tránh sidebar che */
-  background: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
   position: sticky;
@@ -39,7 +37,6 @@
 /* Footer */
 .introduce-page footer {
   margin-left: 250px;
-  background: #000000;
   padding: 15px;
   text-align: center;
 }

@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TranslatePage from "./pages/TranslatePage/TranslatePage";
 import IntroducePage from "./pages/IntroducePage/Introducepage";
+import JLPTPage from "./pages/JLPTPage/JLPTPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/translate" element={<TranslatePage />} />
         <Route path="/introduce" element={<IntroducePage />} />
+        <Route path="/jlpt" element={<JLPTPage />} />
       </Routes>
     </Router>
   );
