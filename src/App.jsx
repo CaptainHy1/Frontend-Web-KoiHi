@@ -17,6 +17,7 @@ function App() {
         <Route path="/translate" element={<TranslatePage />} />
         <Route path="/introduce" element={<IntroducePage />} />
         <Route path="/jlpt" element={<JLPTPage />} />
+        <Route path="*" element={<HomePage />} />
       </Routes>
     </Router>
   );
