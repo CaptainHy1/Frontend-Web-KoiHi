@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaLock,
+  FaEye,
+  FaEyeSlash,
+  FaGoogle,
+  FaApple,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./LoginPage.css";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,40 +28,77 @@ function LoginPage() {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Đăng nhập với</h2>
-
-        {/* Nút social login */}
-        <div className="social-login">
-          <button className="google">Google</button>
-          <button className="apple">Apple</button>
+        {/* Logo/Brand */}
+        <div className="brand-section">
+          <div className="brand-logo">
+            <FaLock />
+          </div>
+          <h1 className="brand-title">Chào mừng trở lại</h1>
+          <p className="brand-subtitle">Đăng nhập để tiếp tục</p>
         </div>
 
-        <p className="divider">hoặc dùng email và mật khẩu</p>
+        {/* Social Login */}
+        <div className="social-login">
+          <button className="social-btn google">
+            <FaGoogle />
+            <span>Tiếp tục với Google</span>
+          </button>
 
-        {/* Form login */}
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <FaEnvelope className="icon" />
-            <input
-              type="email"
-              placeholder="Nhập email của bạn"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <button className="social-btn apple">
+            <FaApple />
+            <span>Tiếp tục với Apple</span>
+          </button>
+        </div>
+
+        <div className="divider">
+          <span>hoặc</span>
+        </div>
+
+        {/* Login Form */}
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label className="form-label">Email</label>
+            <div className="input-group">
+              <FaEnvelope className="input-icon" />
+              <input
+                type="email"
+                placeholder="example@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-input"
+              />
+            </div>
           </div>
 
-          <div className="input-group">
-            <FaLock className="icon" />
-            <input
-              type="password"
-              placeholder="Nhập mật khẩu"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <div className="form-group">
+            <label className="form-label">Mật khẩu</label>
+            <div className="input-group">
+              <FaLock className="input-icon" />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="password-toggle"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
 
-          <div className="options">
-            <Link to="/forgot-password">Quên mật khẩu?</Link>
+          <div className="form-options">
+            <label className="remember-me">
+              <input type="checkbox" />
+              <span>Nhớ tôi</span>
+            </label>
+            <Link to="/forgot-password" className="forgot-password">
+              Quên mật khẩu?
+            </Link>
           </div>
 
           <button type="submit" className="login-btn">
@@ -62,8 +107,17 @@ function LoginPage() {
         </form>
 
         <p className="register">
-          Bạn chưa có tài khoản? <Link to="/register">Đăng ký</Link>
+          Chưa có tài khoản? <Link to="/register">Đăng ký ngay</Link>
         </p>
+
+        {/* Footer */}
+        <div className="footer">
+          <p>
+            Bằng việc đăng nhập, bạn đồng ý với{" "}
+            <a href="#">Điều khoản dịch vụ</a> và{" "}
+            <a href="#">Chính sách bảo mật</a>
+          </p>
+        </div>
       </div>
     </div>
   );
