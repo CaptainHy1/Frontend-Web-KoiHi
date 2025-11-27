@@ -1,0 +1,133 @@
+/* Layout tổng thể */
+.homepage {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+/* Sidebar */
+.sidebar {
+  flex-shrink: 0;
+  width: 260px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Content wrapper - 2 cột */
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 24px 32px;
+  flex: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Cột trái - Dictionary Card */
+.content-left {
+  flex: 1;
+  min-width: 0; /* Prevent flex item overflow */
+}
+
+/* Cột phải - History */
+.content-right {
+  flex: 0 0 320px;
+  padding: 20px;
+  border-radius: 12px;
+  height: fit-content;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  transition: box-shadow 0.3s ease;
+}
+
+.content-right:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .content-wrapper {
+    padding: 20px 24px;
+    gap: 20px;
+  }
+
+  .content-right {
+    flex: 0 0 280px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    padding: 16px 20px;
+  }
+
+  .content-right {
+    flex: 1;
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .content-wrapper {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .content-right {
+    padding: 16px;
+  }
+}
+
+/* Scrollbar styling for content-right */
+.content-right::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content-right::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.content-right::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.content-right::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
