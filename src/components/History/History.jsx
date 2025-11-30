@@ -42,10 +42,10 @@ export default function History({ reloadSignal }) {
 
   return (
     <div>
-      <h3>Lịch sử tìm kiếm</h3>
+      <h3>Search history</h3>
 
       {history.length === 0 ? (
-        <p>Không có dữ liệu</p>
+        <p>No data available</p>
       ) : (
         history.map((item) => (
           <div key={item.id} style={{ marginBottom: "8px" }}>
