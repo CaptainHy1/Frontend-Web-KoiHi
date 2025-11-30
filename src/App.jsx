@@ -10,6 +10,7 @@ import FlashcardsPage from "./pages/FlashcardPage/FlashcardPage";
 import MyWords from "./pages/MyWords.page/MyWords";
 import QuizPage from "./pages/QuizPage/QuizPage";
 import WordDetailPage from "./pages/WordDetailPage/WordDetailPage";
+import SettingPage from "./pages/SettingPage/SettingPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/mywords" element={<MyWords />} />
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/search" element={<HomePage />} />
+        <Route path="/setting" element={<SettingPage />} />
       </Routes>
     </Router>
   );

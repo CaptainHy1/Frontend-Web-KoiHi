@@ -92,7 +92,7 @@ function Sidebar() {
           </li>
           <li>
             <NavLink
-              to="/settings"
+              to="/setting"
               className={({ isActive }) =>
                 `menu-item ${isActive ? "active" : ""}`
               }
@@ -100,7 +100,7 @@ function Sidebar() {
               <div className="icon-wrapper">
                 <FaCog />
               </div>
-              <span>Settings</span>
+              <span>Setting</span>
             </NavLink>
           </li>
         </ul>
