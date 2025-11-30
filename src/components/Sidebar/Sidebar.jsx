@@ -35,7 +35,7 @@ function Sidebar() {
               <div className="icon-wrapper">
                 <FaSearch />
               </div>
-              <span>Tra cứu</span>
+              <span>Search</span>
             </NavLink>
           </li>
           <li>
@@ -48,7 +48,7 @@ function Sidebar() {
               <div className="icon-wrapper">
                 <FaBook />
               </div>
-              <span>Dịch</span>
+              <span>Translate</span>
             </NavLink>
           </li>
           <li>
@@ -74,7 +74,7 @@ function Sidebar() {
               <div className="icon-wrapper">
                 <FaBookReader />
               </div>
-              <span>Từ của tôi</span>
+              <span>My Words</span>
             </NavLink>
           </li>
           <li>
@@ -87,7 +87,7 @@ function Sidebar() {
               <div className="icon-wrapper">
                 <FaInfoCircle />
               </div>
-              <span>Giới thiệu</span>
+              <span>About</span>
             </NavLink>
           </li>
           <li>
@@ -100,7 +100,7 @@ function Sidebar() {
               <div className="icon-wrapper">
                 <FaCog />
               </div>
-              <span>Cài đặt</span>
+              <span>Settings</span>
             </NavLink>
           </li>
         </ul>

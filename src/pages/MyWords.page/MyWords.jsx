@@ -93,11 +93,11 @@ export default function MyWords() {
             {/* Header Section */}
             <div className="mywords-header">
               <div className="header-icon">⭐</div>
-              <h1 className="page-title">Từ của tôi</h1>
+              <h1 className="page-title">My Words</h1>
               <p className="page-subtitle">
                 {words.length > 0
-                  ? `Bạn có ${words.length} từ trong danh sách yêu thích`
-                  : "Chưa có từ nào được lưu"}
+                  ? `You have ${words.length} words in your favorites list`
+                  : "No words saved yet"}
               </p>
             </div>
 
@@ -105,7 +105,7 @@ export default function MyWords() {
             {loading && (
               <div className="loading-state">
                 <div className="spinner">⏳</div>
-                <p>Đang tải danh sách...</p>
+                <p>Loading list...</p>
               </div>
             )}
 
@@ -113,8 +113,8 @@ export default function MyWords() {
             {!loading && words.length === 0 && (
               <div className="empty-state">
                 <div className="empty-icon">📚</div>
-                <h2>Chưa có từ nào</h2>
-                <p>Hãy thêm từ vựng yêu thích để học tập hiệu quả hơn!</p>
+                <h2>No words yet</h2>
+                <p>Add your favorite vocabulary to learn more effectively!</p>
               </div>
             )}
 
@@ -135,7 +135,7 @@ export default function MyWords() {
                       <button
                         className="favorite-btn active"
                         onClick={() => removeFavorite(word.id)}
-                        title="Bỏ yêu thích"
+                        title="Remove from favorites"
                       >
                         ⭐
                       </button>
@@ -155,7 +155,7 @@ export default function MyWords() {
                       onClick={() => removeFavorite(word.id)}
                     >
                       <span>🗑️</span>
-                      Xóa khỏi danh sách
+                      Remove from list
                     </button>
                   </div>
                 ))}

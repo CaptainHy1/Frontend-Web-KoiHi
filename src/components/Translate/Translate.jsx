@@ -10,7 +10,7 @@ export default function TextTranslator() {
 
   const translate = async () => {
     if (!text.trim()) {
-      setError("Vui lòng nhập văn bản");
+      setError("Please enter text");
       return;
     }
 
@@ -34,10 +34,10 @@ export default function TextTranslator() {
       } else if (data.error) {
         setError(data.error);
       } else {
-        setError("Không dịch được");
+        setError("Could not translate");
       }
     } catch (err) {
-      setError("Lỗi kết nối đến server");
+      setError("Connection error to server");
     } finally {
       setLoading(false);
     }
@@ -70,11 +70,11 @@ export default function TextTranslator() {
             <span>🌐</span>
           </div>
           <h1 className="translator-title">
-            Dịch đoạn văn
+            Text Translation
             <span className="sparkle">✨</span>
           </h1>
           <p className="translator-subtitle">
-            Nhật → Việt | Nhanh chóng & Chính xác
+            Japanese → Vietnamese | Fast & Accurate
           </p>
         </div>
 
@@ -84,11 +84,11 @@ export default function TextTranslator() {
           <div className="language-header">
             <div className="language-item">
               <span className="flag">🇯🇵</span>
-              <span className="language-name">Tiếng Nhật</span>
+              <span className="language-name">Japanese</span>
             </div>
             <span className="arrow">→</span>
             <div className="language-item">
-              <span className="language-name">Tiếng Việt</span>
+              <span className="language-name">Vietnamese</span>
               <span className="flag">🇻🇳</span>
             </div>
           </div>
@@ -98,13 +98,13 @@ export default function TextTranslator() {
             <div className="input-header">
               <label className="input-label">
                 <span className="dot"></span>
-                Văn bản cần dịch
+                Text to translate
               </label>
               <div className="input-actions">
-                <span className="char-count">{text.length} ký tự</span>
+                <span className="char-count">{text.length} characters</span>
                 {text && (
                   <button onClick={handleClear} className="clear-btn">
-                    🔄 Xóa
+                    🔄 Clear
                   </button>
                 )}
               </div>
@@ -116,12 +116,12 @@ export default function TextTranslator() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="こんにちは、元気ですか？&#10;&#10;Nhập hoặc dán văn bản tiếng Nhật vào đây..."
+              placeholder="こんにちは、元気ですか？&#10;&#10;Enter or paste Japanese text here..."
             />
 
             <div className="input-footer">
               <p className="tip-text">
-                💡 Mẹo: Nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để dịch nhanh
+                💡 Tip: Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> for quick translation
               </p>
               <button
                 onClick={translate}
@@ -131,11 +131,11 @@ export default function TextTranslator() {
                 {loading ? (
                   <>
                     <span className="spinner">⏳</span>
-                    Đang dịch...
+                    Translating...
                   </>
                 ) : (
                   <>
-                    Dịch ngay
+                    Translate
                     <span>→</span>
                   </>
                 )}
@@ -148,7 +148,7 @@ export default function TextTranslator() {
             <div className="error-message">
               <div className="error-icon">!</div>
               <div>
-                <p className="error-title">Có lỗi xảy ra</p>
+                <p className="error-title">An error occurred</p>
                 <p className="error-text">{error}</p>
               </div>
             </div>
@@ -161,18 +161,18 @@ export default function TextTranslator() {
                 <div className="result-header">
                   <label className="result-label">
                     <span className="check-icon">✓</span>
-                    Kết quả dịch
+                    Translation Result
                   </label>
                   <button onClick={handleCopy} className="copy-btn">
                     {copied ? (
                       <>
                         <span>✓</span>
-                        Đã sao chép!
+                        Copied!
                       </>
                     ) : (
                       <>
                         <span>📋</span>
-                        Sao chép
+                        Copy
                       </>
                     )}
                   </button>
@@ -189,8 +189,8 @@ export default function TextTranslator() {
             <div className="loading-section">
               <div className="loading-container">
                 <div className="loading-spinner">⏳</div>
-                <p className="loading-title">Đang xử lý bản dịch...</p>
-                <p className="loading-text">Vui lòng đợi trong giây lát</p>
+                <p className="loading-title">Processing translation...</p>
+                <p className="loading-text">Please wait a moment</p>
               </div>
             </div>
           )}
@@ -200,20 +200,20 @@ export default function TextTranslator() {
         <div className="info-cards">
           <div className="info-card">
             <div className="info-icon">⚡</div>
-            <h3 className="info-title">Dịch nhanh</h3>
-            <p className="info-text">Kết quả trong vài giây</p>
+            <h3 className="info-title">Fast Translation</h3>
+            <p className="info-text">Results in seconds</p>
           </div>
 
           <div className="info-card">
             <div className="info-icon">🎯</div>
-            <h3 className="info-title">Chính xác</h3>
-            <p className="info-text">Công nghệ dịch hiện đại</p>
+            <h3 className="info-title">Accurate</h3>
+            <p className="info-text">Modern translation technology</p>
           </div>
 
           <div className="info-card">
             <div className="info-icon">🔒</div>
-            <h3 className="info-title">An toàn</h3>
-            <p className="info-text">Bảo mật thông tin</p>
+            <h3 className="info-title">Secure</h3>
+            <p className="info-text">Information protection</p>
           </div>
         </div>
       </div>

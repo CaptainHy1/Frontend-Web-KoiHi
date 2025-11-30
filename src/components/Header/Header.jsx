@@ -19,30 +19,30 @@ function Header() {
   return (
     <header className="header">
       <div className="header-left">
-        <h3>Chào ngày mới !</h3>
+        <h3>Good day!</h3>
       </div>
 
       <div className="header-right">
         {user ? (
           <>
-            <span className="username">Xin chào {user.username}</span>
+            <span className="username">Hello {user.username}</span>
             <button className="btn logout" onClick={handleLogout}>
-              Đăng xuất
+              Logout
             </button>
           </>
         ) : (
           <>
             <Link to="/login" className="btn login">
-              Đăng nhập
+              Login
             </Link>
             <Link to="/register" className="btn register">
-              Đăng ký
+              Register
             </Link>
           </>
         )}
 
         <div className="dropdown">
-          <button className="flag-btn">🇻🇳</button>
+          <button className="flag-btn">🇺🇸</button>
         </div>
 
         <FaBell className="icon bell" />

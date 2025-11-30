@@ -35,7 +35,7 @@ export default function LoginPage() {
     setMessage("");
 
     if (!emailOrUsername || !password) {
-      setMessage("Vui lòng nhập username và mật khẩu!");
+      setMessage("Please enter username and password!");
       return;
     }
 
@@ -71,7 +71,7 @@ export default function LoginPage() {
 
       const { access, refresh } = tokenJson || {};
       if (!access || !refresh)
-        throw new Error("Phản hồi không có access/refresh token.");
+        throw new Error("Response does not contain access/refresh token.");
 
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
@@ -97,7 +97,7 @@ export default function LoginPage() {
       // 3) Điều hướng về trang chủ
       navigate("/", { replace: true });
     } catch (err) {
-      setMessage(err.message || "Đăng nhập thất bại");
+      setMessage(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -110,23 +110,23 @@ export default function LoginPage() {
           <div className="brand-logo">
             <FaLock />
           </div>
-          <h1>Chào mừng trở lại</h1>
-          <p>Đăng nhập để tiếp tục</p>
+          <h1>Welcome Back</h1>
+          <p>Login to continue</p>
         </div>
 
         <div className="social-login">
           <button type="button" className="social-btn google">
             <FaGoogle />
-            <span>Tiếp tục với Google</span>
+            <span>Continue with Google</span>
           </button>
           <button type="button" className="social-btn apple">
             <FaApple />
-            <span>Tiếp tục với Apple</span>
+            <span>Continue with Apple</span>
           </button>
         </div>
 
         <div className="divider">
-          <span>hoặc</span>
+          <span>or</span>
         </div>
 
         <form onSubmit={handleSubmit} className="login-form" noValidate>
@@ -143,7 +143,7 @@ export default function LoginPage() {
             />
           </div>
 
-          <label>Mật khẩu</label>
+          <label>Password</label>
           <div className="input-group">
             <FaLock />
             <input
@@ -157,7 +157,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              aria-label="Hiện/ẩn mật khẩu"
+              aria-label="Show/hide password"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
@@ -165,20 +165,20 @@ export default function LoginPage() {
 
           <div className="form-options">
             <label>
-              <input type="checkbox" /> Nhớ tôi
+              <input type="checkbox" /> Remember me
             </label>
-            <Link to="/login">Quên mật khẩu?</Link>
+            <Link to="/login">Forgot password?</Link>
           </div>
 
           <button type="submit" disabled={loading}>
-            {loading ? "Đang đăng nhập..." : "Đăng nhập"}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         {message && <p style={{ color: "red", marginTop: 10 }}>{message}</p>}
 
         <p>
-          Chưa có tài khoản? <Link to="/register">Đăng ký</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

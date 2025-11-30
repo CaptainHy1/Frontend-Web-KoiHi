@@ -44,13 +44,13 @@ export default function RegisterPage() {
     setServerErr("");
 
     if (!fullName || !username || !password || !confirmPassword) {
-      return setServerErr("Vui lòng nhập đầy đủ các trường bắt buộc (*).");
+      return setServerErr("Please fill in all required fields (*).");
     }
     if (password.length < 6) {
-      return setServerErr("Mật khẩu tối thiểu 6 ký tự.");
+      return setServerErr("Password must be at least 6 characters.");
     }
     if (password !== confirmPassword) {
-      return setServerErr("Mật khẩu không khớp!");
+      return setServerErr("Passwords do not match!");
     }
 
     // Tách họ tên (đơn giản)
@@ -93,7 +93,7 @@ export default function RegisterPage() {
 
       navigate("/login", { replace: true });
     } catch (e) {
-      setServerErr(e.message || "Đăng ký thất bại");
+      setServerErr(e.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -107,24 +107,24 @@ export default function RegisterPage() {
           <div className="brand-logo">
             <FaUser />
           </div>
-          <h1 className="brand-title">Tạo tài khoản mới</h1>
-          <p className="brand-subtitle">Đăng ký để bắt đầu hành trình</p>
+          <h1 className="brand-title">Create New Account</h1>
+          <p className="brand-subtitle">Register to start your journey</p>
         </div>
 
         {/* Social (placeholder) */}
         <div className="social-login">
           <button type="button" className="social-btn google">
             <FaGoogle />
-            <span>Đăng ký với Google</span>
+            <span>Sign up with Google</span>
           </button>
           <button type="button" className="social-btn apple">
             <FaApple />
-            <span>Đăng ký với Apple</span>
+            <span>Sign up with Apple</span>
           </button>
         </div>
 
         <div className="divider">
-          <span>hoặc</span>
+          <span>or</span>
         </div>
 
         {/* Error */}
@@ -133,12 +133,12 @@ export default function RegisterPage() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="register-form" noValidate>
           <div className="form-group">
-            <label className="form-label">Họ và tên *</label>
+            <label className="form-label">Full Name *</label>
             <div className="input-group">
               <FaUser className="input-icon" />
               <input
                 type="text"
-                placeholder="Nhập họ và tên của bạn"
+                placeholder="Enter your full name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 className="form-input"
@@ -149,12 +149,12 @@ export default function RegisterPage() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Tên đăng nhập (username) *</label>
+            <label className="form-label">Username *</label>
             <div className="input-group">
               <FaUser className="input-icon" />
               <input
                 type="text"
-                placeholder="Tên đăng nhập (chỉ chữ/số và @/./+/-/_ )"
+                placeholder="Username (letters/numbers and @/./+/-/_ only)"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="form-input"
@@ -165,12 +165,12 @@ export default function RegisterPage() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Email (không bắt buộc)</label>
+            <label className="form-label">Email (optional)</label>
             <div className="input-group">
               <FaEnvelope className="input-icon" />
               <input
                 type="email"
-                placeholder="example@gmail.com (có thể bỏ trống)"
+                placeholder="example@gmail.com (can be left empty)"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="form-input"
@@ -180,7 +180,7 @@ export default function RegisterPage() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Mật khẩu *</label>
+            <label className="form-label">Password *</label>
             <div className="input-group">
               <FaLock className="input-icon" />
               <input
@@ -197,7 +197,7 @@ export default function RegisterPage() {
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="password-toggle"
-                aria-label="Hiện/ẩn mật khẩu"
+                aria-label="Show/hide password"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -205,7 +205,7 @@ export default function RegisterPage() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Xác nhận mật khẩu *</label>
+            <label className="form-label">Confirm Password *</label>
             <div className="input-group">
               <FaLock className="input-icon" />
               <input
@@ -222,7 +222,7 @@ export default function RegisterPage() {
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 className="password-toggle"
-                aria-label="Hiện/ẩn xác nhận mật khẩu"
+                aria-label="Show/hide confirm password"
               >
                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -233,25 +233,25 @@ export default function RegisterPage() {
             <label className="terms-checkbox">
               <input type="checkbox" required />
               <span>
-                Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và{" "}
-                <a href="#">Chính sách bảo mật</a>
+                I agree to the <a href="#">Terms of Service</a> and{" "}
+                <a href="#">Privacy Policy</a>
               </span>
             </label>
           </div>
 
           <button type="submit" className="register-btn" disabled={loading}>
-            {loading ? "Đang tạo..." : "Tạo tài khoản"}
+            {loading ? "Creating..." : "Create Account"}
           </button>
         </form>
 
         <p className="login-link">
-          Đã có tài khoản? <Link to="/login">Đăng nhập ngay</Link>
+          Already have an account? <Link to="/login">Login now</Link>
         </p>
 
         <div className="footer">
           <p>
-            Bằng việc đăng ký, bạn xác nhận rằng bạn đã đọc và hiểu{" "}
-            <a href="#">các điều khoản</a> của chúng tôi.
+            By registering, you confirm that you have read and understand{" "}
+            <a href="#">our terms</a>.
           </p>
         </div>
       </div>

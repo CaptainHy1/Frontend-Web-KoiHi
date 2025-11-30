@@ -71,7 +71,7 @@ export default function DictionarySearchAll({ onSearchDone }) {
         setInFlashcards(inFlashSet);
       }
     } catch (e) {
-      setErr(e.message || "Lỗi gọi API");
+      setErr(e.message || "API Error");
       setItems([]);
       setNextUrl(null);
       setPrevUrl(null);
@@ -120,7 +120,7 @@ export default function DictionarySearchAll({ onSearchDone }) {
       body: JSON.stringify({ name: "My deck" }),
     });
 
-    if (!res.ok) throw new Error("Không tạo được flashcard");
+    if (!res.ok) throw new Error("Could not create flashcard");
     const data = await res.json();
     setDefaultFlashcardId(data.id);
     return data.id;
@@ -149,7 +149,7 @@ export default function DictionarySearchAll({ onSearchDone }) {
 
       if (!res.ok) {
         const json = await res.json().catch(() => null);
-        throw new Error(json?.detail || "Lỗi thêm vào flashcard");
+        throw new Error(json?.detail || "Error adding to flashcard");
       }
 
       setInFlashcards((prev) => new Set([...prev, entryId]));
@@ -185,7 +185,7 @@ export default function DictionarySearchAll({ onSearchDone }) {
       });
 
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.detail || "Lỗi API");
+      if (!res.ok) throw new Error(json?.detail || "API Error");
 
       setFavorites((prev) => {
         const newSet = new Set(prev);
@@ -197,15 +197,15 @@ export default function DictionarySearchAll({ onSearchDone }) {
       entry.is_favorited = json.favorited;
       setItems((prev) => [...prev]); // force re-render
     } catch (err) {
-      alert(`Lỗi toggle favorite: ${err.message}`);
+      alert(`Error toggle favorite: ${err.message}`);
     }
   };
 
   return (
     <div className="wrap">
       <header className="header">
-        <h1 className="title">Từ điển Tiếng Nhật</h1>
-        <p className="subtitle">Tra cứu từ vựng nhanh chóng và chính xác</p>
+        <h1 className="title">Japanese Dictionary</h1>
+        <p className="subtitle">Quick and accurate vocabulary lookup</p>
       </header>
 
       <div className="searchContainer">
@@ -214,11 +214,11 @@ export default function DictionarySearchAll({ onSearchDone }) {
             className="input"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Nhập từ cần tra (vd: いいえ / いえ / nihon)"
+            placeholder="Enter word to search (e.g.: いいえ / いえ / nihon)"
             onKeyPress={(e) => e.key === "Enter" && onSearch(e)}
           />
           <button className="btn" onClick={onSearch} disabled={loading}>
-            {loading ? "Đang tìm..." : "Tìm kiếm"}
+            {loading ? "Searching..." : "Search"}
           </button>
         </div>
       </div>
@@ -228,7 +228,7 @@ export default function DictionarySearchAll({ onSearchDone }) {
       {!loading && !err && items.length === 0 && q.trim() !== "" && (
         <div className="noResults">
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
-          <div>Không tìm thấy kết quả phù hợp</div>
+          <div>No matching results found</div>
         </div>
       )}
 
@@ -262,12 +262,12 @@ export default function DictionarySearchAll({ onSearchDone }) {
                   {isAdding ? (
                     <>
                       <span style={{ fontSize: 16 }}>⏳</span>
-                      <span>Đang thêm...</span>
+                      <span>Adding...</span>
                     </>
                   ) : isInFlashcard ? (
                     <>
                       <span style={{ fontSize: 16 }}>✓</span>
-                      <span>Đã có</span>
+                      <span>Added</span>
                     </>
                   ) : (
                     <>
@@ -287,13 +287,13 @@ export default function DictionarySearchAll({ onSearchDone }) {
                   }}
                   onClick={() => toggleFavorite(entry)}
                 >
-                  {isFav ? "❤️ Đã thích" : "🤍 Yêu thích"}
+                  {isFav ? "❤️ Liked" : "🤍 Favorite"}
                 </button>
               )}
             </header>
 
             <section>
-              <h3 className="sectionTitle">Nghĩa của từ</h3>
+              <h3 className="sectionTitle">Meanings</h3>
               <ol className="meaningList">
                 {(entry.meanings || []).map((m, idx) => (
                   <li key={m.id ?? idx} className="meaningItem">
@@ -323,12 +323,12 @@ export default function DictionarySearchAll({ onSearchDone }) {
         <div className="pager">
           {prevUrl && (
             <button className="pagerBtn" onClick={loadPrev}>
-              ← Trang trước
+              ← Previous
             </button>
           )}
           {nextUrl && (
             <button className="pagerBtn" onClick={loadNext}>
-              Trang sau →
+              Next →
             </button>
           )}
         </div>

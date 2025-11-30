@@ -6,7 +6,7 @@ function JLPT() {
   return (
     <div className="jlpt-component" style={{ padding: "40px" }}>
       <h1 style={{ textAlign: "center", marginBottom: "40px" }}>
-        Luyện thi JLPT
+        JLPT Practice
       </h1>
 
       <div

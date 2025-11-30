@@ -70,7 +70,7 @@ export default function Quiz() {
 
       setQuestions(normalized);
     } catch (err) {
-      setError(err.message || "Lỗi khi lấy câu hỏi");
+      setError(err.message || "Error loading questions");
     } finally {
       setLoading(false);
     }
@@ -110,27 +110,27 @@ export default function Quiz() {
     <div className="quiz-container">
       <div className="quiz-header">
         <h1 className="quiz-title">JLPT Quiz</h1>
-        <p className="quiz-subtitle">Luyện tập năng lực tiếng Nhật</p>
+        <p className="quiz-subtitle">Practice Japanese Language Proficiency</p>
       </div>
 
       <div className="quiz-settings">
         <div className="setting-group">
-          <label className="setting-label">Cấp độ</label>
+          <label className="setting-label">Level</label>
           <select
             className="setting-select"
             value={level}
             onChange={(e) => setLevel(e.target.value)}
           >
-            <option value="N5">N5 - Sơ cấp</option>
-            <option value="N4">N4 - Sơ - Trung cấp</option>
-            <option value="N3">N3 - Trung cấp</option>
-            <option value="N2">N2 - Trung - Cao cấp</option>
-            <option value="N1">N1 - Cao cấp</option>
+            <option value="N5">N5 - Beginner</option>
+            <option value="N4">N4 - Elementary</option>
+            <option value="N3">N3 - Intermediate</option>
+            <option value="N2">N2 - Upper Intermediate</option>
+            <option value="N1">N1 - Advanced</option>
           </select>
         </div>
 
         <div className="setting-group">
-          <label className="setting-label">Số câu hỏi</label>
+          <label className="setting-label">Number of Questions</label>
           <input
             type="number"
             min={1}
@@ -149,10 +149,10 @@ export default function Quiz() {
           {loading ? (
             <>
               <span className="spinner"></span>
-              Đang tải...
+              Loading...
             </>
           ) : (
-            "Tạo đề thi"
+            "Generate Quiz"
           )}
         </button>
       </div>
@@ -167,7 +167,7 @@ export default function Quiz() {
       {!questions.length && !loading && (
         <div className="empty-state">
           <div className="empty-icon">📝</div>
-          <p>Chọn cấp độ và số câu hỏi, sau đó nhấn "Tạo đề thi" để bắt đầu</p>
+          <p>Select level and number of questions, then click "Generate Quiz" to start</p>
         </div>
       )}
 
@@ -175,15 +175,15 @@ export default function Quiz() {
         <div className="quiz-content">
           <div className="quiz-info-bar">
             <div className="info-badge">
-              <span className="info-label">Cấp độ:</span>
+              <span className="info-label">Level:</span>
               <span className="info-value">{level}</span>
             </div>
             <div className="info-badge">
-              <span className="info-label">Số câu:</span>
+              <span className="info-label">Questions:</span>
               <span className="info-value">{questions.length}</span>
             </div>
             <div className="info-badge">
-              <span className="info-label">Đã làm:</span>
+              <span className="info-label">Completed:</span>
               <span className="info-value">{progressLabel}</span>
             </div>
           </div>
@@ -194,21 +194,21 @@ export default function Quiz() {
                 onClick={() => setShowAll(false)}
                 className={`btn btn-view ${!showAll ? "active" : ""}`}
               >
-                📄 Từng câu
+                📄 One by One
               </button>
               <button
                 onClick={() => setShowAll(true)}
                 className={`btn btn-view ${showAll ? "active" : ""}`}
               >
-                📋 Tất cả
+                📋 All
               </button>
             </div>
             <div className="action-group">
               <button onClick={restart} className="btn btn-secondary">
-                🔄 Làm lại
+                🔄 Restart
               </button>
               <button onClick={() => fetchQuiz()} className="btn btn-secondary">
-                ✨ Đề mới
+                ✨ New Quiz
               </button>
             </div>
           </div>
@@ -229,7 +229,7 @@ export default function Quiz() {
               {!submitted ? (
                 <div className="submit-section">
                   <button onClick={submit} className="btn btn-submit">
-                    ✓ Nộp bài
+                    ✓ Submit
                   </button>
                 </div>
               ) : (
@@ -252,11 +252,11 @@ export default function Quiz() {
                   disabled={currentIndex === 0}
                   className="btn btn-nav"
                 >
-                  ← Trước
+                  ← Previous
                 </button>
 
                 <div className="question-indicator">
-                  Câu {currentIndex + 1} / {questions.length}
+                  Question {currentIndex + 1} / {questions.length}
                 </div>
 
                 <button
@@ -268,12 +268,12 @@ export default function Quiz() {
                   disabled={currentIndex === questions.length - 1}
                   className="btn btn-nav"
                 >
-                  Sau →
+                  Next →
                 </button>
 
                 {!submitted ? (
                   <button onClick={submit} className="btn btn-submit">
-                    ✓ Nộp bài
+                    ✓ Submit
                   </button>
                 ) : (
                   <ResultPanel score={score} total={questions.length} />
@@ -289,11 +289,11 @@ export default function Quiz() {
 
 function QuestionCard({ qIndex, question, selected, onSelect, submitted }) {
   if (!question)
-    return <div className="question-card">(Câu hỏi không hợp lệ)</div>;
+    return <div className="question-card">(Invalid question)</div>;
 
   return (
     <div className="question-card">
-      <div className="question-number">Câu {qIndex + 1}</div>
+      <div className="question-number">Question {qIndex + 1}</div>
       <div
         className="question-text"
         dangerouslySetInnerHTML={{ __html: question.sentence }}
@@ -337,7 +337,7 @@ function QuestionCard({ qIndex, question, selected, onSelect, submitted }) {
 
       {submitted && (
         <div className="answer-reveal">
-          ✓ Đáp án đúng:{" "}
+          ✓ Correct answer:{" "}
           <strong>{String.fromCharCode(65 + question.correct_index)}</strong>
         </div>
       )}
@@ -358,7 +358,7 @@ function ResultPanel({ score, total }) {
         </div>
         <div className="result-percentage">{percentage}%</div>
         <div className="result-message">
-          {isPassed ? "Xuất sắc!" : "Cố gắng lên!"}
+          {isPassed ? "Excellent!" : "Keep trying!"}
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ export default function Flashcard() {
       });
       setAllWords(words);
     } catch (e) {
-      setErr(e.message || "Lỗi khi tải flashcards");
+      setErr(e.message || "Error loading flashcards");
     } finally {
       setLoading(false);
     }

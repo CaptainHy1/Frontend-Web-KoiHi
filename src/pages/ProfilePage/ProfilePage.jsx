@@ -258,7 +258,7 @@ export default function ProfilePage() {
         const data = await res.json();
         setUser(data);
       } catch (e) {
-        setErr(e.message || "Không tải được thông tin tài khoản");
+        setErr(e.message || "Could not load account information");
       } finally {
         setLoading(false);
       }
@@ -317,10 +317,10 @@ export default function ProfilePage() {
                 <div style={ui.userIcon}>
                   {loading ? "..." : getUserInitials(user)}
                 </div>
-                <h1 style={ui.title}>Hồ sơ của tôi</h1>
+                <h1 style={ui.title}>My Profile</h1>
               </div>
               <div style={ui.subtitle}>
-                Quản lý thông tin cá nhân và cài đặt tài khoản
+                Manage your personal information and account settings
               </div>
             </div>
             <div style={ui.toolbar}>
@@ -330,7 +330,7 @@ export default function ProfilePage() {
                 onMouseEnter={(e) => Object.assign(e.target.style, ui.btnHover)}
                 onMouseLeave={(e) => Object.assign(e.target.style, ui.btn)}
               >
-                🏠 Trang chủ
+                🏠 Home
               </button>
               <button
                 style={ui.btn}
@@ -338,7 +338,7 @@ export default function ProfilePage() {
                 onMouseEnter={(e) => Object.assign(e.target.style, ui.btnHover)}
                 onMouseLeave={(e) => Object.assign(e.target.style, ui.btn)}
               >
-                🚪 Đăng xuất
+                🚪 Logout
               </button>
             </div>
           </div>
@@ -348,18 +348,18 @@ export default function ProfilePage() {
 
         <div style={ui.card}>
           <div style={ui.cardHeader}>
-            <h2 style={ui.cardTitle}>📋 Thông tin cá nhân</h2>
+            <h2 style={ui.cardTitle}>📋 Personal Information</h2>
           </div>
           <div style={ui.cardBody}>
             {field("Username", user?.username)}
             {field("Email", user?.email)}
-            {field("Họ", user?.first_name)}
-            {field("Tên", user?.last_name)}
-            {field("Vai trò", user?.role, true)}
+            {field("First Name", user?.first_name)}
+            {field("Last Name", user?.last_name)}
+            {field("Role", user?.role, true)}
             {field(
-              "Ngày tham gia",
+              "Date Joined",
               user?.date_joined
-                ? new Date(user.date_joined).toLocaleString("vi-VN")
+                ? new Date(user.date_joined).toLocaleString("en-US")
                 : null,
               false,
               true
