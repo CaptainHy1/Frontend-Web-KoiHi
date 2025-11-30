@@ -74,7 +74,7 @@ export default function TextTranslator() {
             <span className="sparkle">✨</span>
           </h1>
           <p className="translator-subtitle">
-            Japanese → Vietnamese | Fast & Accurate
+            Japanese → English | Fast & Accurate
           </p>
         </div>
 
@@ -88,8 +88,8 @@ export default function TextTranslator() {
             </div>
             <span className="arrow">→</span>
             <div className="language-item">
-              <span className="language-name">Vietnamese</span>
-              <span className="flag">🇻🇳</span>
+              <span className="language-name">English</span>
+              <span className="flag">en</span>
             </div>
           </div>
 
@@ -121,7 +121,8 @@ export default function TextTranslator() {
 
             <div className="input-footer">
               <p className="tip-text">
-                💡 Tip: Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> for quick translation
+                💡 Tip: Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> for quick
+                translation
               </p>
               <button
                 onClick={translate}
