@@ -19,16 +19,15 @@ function Footer() {
         {/* Cột 1 - Thông tin liên hệ */}
         <div className="footer-col">
           {/* <h3 className="logo">mazii</h3> */}
-          <p>Koihi - Bạn đồng hành tiếng Nhật tin cậy</p>
-          <p>📍 315 Trường Chinh, Khương Mai, Thanh Xuân, Hà Nội</p>
-          <p>📧 support@mazii.net</p>
-          <p>📞 (+84) 37 773 8144</p>
-          <p>🌐 https://eupgroup.net</p>
+          <p>Koihi - Your trusted Japanese companion</p>
+          <p>📍 54 Nguyen Luong Bang, Hoa Khanh, Da Nang</p>
+          <p>📧 khoibene@gmail.com</p>
+          <p>📞 (+84) 762 601 342</p>
         </div>
 
         {/* Cột 2 - Mạng xã hội & Tiện ích */}
         <div className="footer-col">
-          <h4>Mạng xã hội</h4>
+          <h4>Social network</h4>
           <div className="social-icons">
             <FaFacebookF />
             <FaTiktok />
@@ -37,46 +36,40 @@ function Footer() {
             <FaLine />
           </div>
 
-          <h4>Tiện ích</h4>
+          <h4>Utilities</h4>
           <div className="browser-icons">
             <FaChrome />
             <FaFirefox />
-          </div>
-
-          <h4>Tải ứng dụng</h4>
-          <div className="app-icons">
-            <FaApple /> App Store
-            <FaGooglePlay /> Google Play
           </div>
         </div>
 
         {/* Cột 3 - Liên kết */}
         <div className="footer-col">
-          <h4>Về Mazii</h4>
+          <h4>About Koihi</h4>
           <ul>
-            <li>Giới thiệu</li>
-            <li>Đối tác</li>
-            <li>Trợ giúp</li>
-            <li>Báo lỗi</li>
-            <li>Điều khoản sử dụng</li>
-            <li>Chính sách bảo mật</li>
+            <li>Introduction</li>
+            <li>Partners</li>
+            <li>Help</li>
+            <li>Report Issues</li>
+            <li>Terms of Use</li>
+            <li>Privacy Policy</li>
           </ul>
         </div>
 
         {/* Cột 4 - Chính sách giao dịch */}
         <div className="footer-col">
-          <h4>Chính sách giao dịch</h4>
+          <h4>Transaction Policies</h4>
           <ul>
-            <li>Chính sách thanh toán</li>
-            <li>Chính sách vận chuyển</li>
-            <li>Chính sách đổi trả</li>
-            <li>Hướng dẫn thanh toán</li>
+            <li>Payment Policy</li>
+            <li>Shipping Policy</li>
+            <li>Return Policy</li>
+            <li>Payment Guide</li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© 2016 CÔNG TY CỔ PHẦN CÔNG NGHỆ EUP</p>
+        <p>© 2025 KOIHI</p>
       </div>
     </footer>
   );

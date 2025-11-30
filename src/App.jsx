@@ -9,6 +9,7 @@ import JLPTPage from "./pages/JLPTPage/JLPTPage";
 import FlashcardsPage from "./pages/FlashcardPage/FlashcardPage";
 import MyWords from "./pages/MyWords.page/MyWords";
 import QuizPage from "./pages/QuizPage/QuizPage";
+import WordDetailPage from "./pages/WordDetailPage/WordDetailPage";
 
 function App() {
   return (
@@ -20,10 +21,12 @@ function App() {
         <Route path="/translate" element={<TranslatePage />} />
         <Route path="/introduce" element={<IntroducePage />} />
         <Route path="/jlpt" element={<JLPTPage />} />
+        <Route path="/word/:id" element={<WordDetailPage />} />
         <Route path="*" element={<HomePage />} />
         <Route path="/flashcards" element={<FlashcardsPage />} />
         <Route path="/mywords" element={<MyWords />} />
         <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/search" element={<HomePage />} />
       </Routes>
     </Router>
   );

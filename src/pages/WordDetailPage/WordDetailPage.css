@@ -1,0 +1,362 @@
+.word-detail-page {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+.word-detail-page .sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.word-detail-page .main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.word-detail-page .content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Loading & Error States */
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.loading-spinner {
+  font-size: 48px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.error-container h2 {
+  color: #dc2626;
+  margin-bottom: 8px;
+}
+
+.error-container p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 24px;
+}
+
+.back-btn:hover {
+  background: #f8fafc;
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateX(-4px);
+}
+
+/* Word Detail Container */
+.word-detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Word Card Detail */
+.word-card-detail {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Word Header */
+.word-header-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.word-main-info {
+  flex: 1;
+}
+
+.word-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.word-reading {
+  font-size: 24px;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.word-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.jlpt-badge,
+.pos-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.jlpt-badge {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.pos-badge {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  font-size: 12px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flashcard-btn,
+.favorite-btn {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.flashcard-btn:hover,
+.favorite-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.flashcard-btn.success {
+  background: rgba(34, 197, 94, 0.3);
+  border-color: rgba(34, 197, 94, 0.5);
+}
+
+.flashcard-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.favorite-btn.active {
+  background: rgba(220, 38, 38, 0.2);
+  border-color: rgba(220, 38, 38, 0.4);
+}
+
+/* Meanings Section */
+.meanings-section {
+  padding: 32px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meanings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.meaning-item-detail {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.meaning-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.meaning-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.meaning-text {
+  font-size: 18px;
+  color: #1e293b;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Examples Section */
+.examples-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.examples-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 16px 0;
+}
+
+.examples-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.example-item {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  border-left: 4px solid #667eea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.example-jp {
+  font-size: 18px;
+  color: #1e293b;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.example-en {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.example-source {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* Additional Info */
+.additional-info {
+  padding: 16px 32px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.cached-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #e0f2fe;
+  color: #0284c7;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .word-detail-page .sidebar {
+    display: none;
+  }
+
+  .word-header-detail {
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .word-title {
+    font-size: 36px;
+  }
+
+  .word-reading {
+    font-size: 20px;
+  }
+
+  .action-buttons {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .flashcard-btn,
+  .favorite-btn {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .meanings-section {
+    padding: 24px;
+  }
+
+  .meaning-item-detail {
+    padding: 16px;
+  }
+}

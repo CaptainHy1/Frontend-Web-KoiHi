@@ -1,5 +1,6 @@
 // src/components/DictionarySearchAll.jsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./DictionaryEntryCard.css";
 
 const API_BASE = import.meta?.env?.VITE_API_BASE || "http://127.0.0.1:8888";
@@ -15,7 +16,7 @@ export default function DictionarySearchAll({ onSearchDone }) {
   const [addingToFlashcard, setAddingToFlashcard] = useState(new Set());
   const [inFlashcards, setInFlashcards] = useState(new Set());
   const [defaultFlashcardId, setDefaultFlashcardId] = useState(null);
-  const [favorites, setFavorites] = useState(new Set());
+  const [, setFavorites] = useState(new Set());
   const isLoggedIn = Boolean(localStorage.getItem("access"));
 
   const fetchUrl = async (url, options = {}) => {
@@ -244,7 +245,9 @@ export default function DictionarySearchAll({ onSearchDone }) {
           <article key={entry.id} className="card">
             <header className="cardHeader">
               <div className="cardHeaderContent">
-                <h2 className="word">{title}</h2>
+                <Link to={`/word/${entry.id}`} className="wordLink">
+                  <h2 className="word">{title}</h2>
+                </Link>
                 {kana && <div className="kana">{kana}</div>}
                 <div className="metaRow">
                   {jlpt && <span className="badge">JLPT {jlpt}</span>}
@@ -287,7 +290,7 @@ export default function DictionarySearchAll({ onSearchDone }) {
                   }}
                   onClick={() => toggleFavorite(entry)}
                 >
-                  {isFav ? "❤️ Liked" : "🤍 Favorite"}
+                  {isFav ? "❤️ Favorite" : "🤍 Favorite"}
                 </button>
               )}
             </header>
@@ -301,19 +304,12 @@ export default function DictionarySearchAll({ onSearchDone }) {
                       <span className="meaningIdx">{idx + 1}</span>
                       <span className="meaningText">{m.meaning || "—"}</span>
                     </div>
-                    {Array.isArray(m.examples) && m.examples.length > 0 && (
-                      <ul className="exampleList">
-                        {m.examples.map((ex) => (
-                          <li key={ex.id} className="exampleItem">
-                            <div className="exJp">{ex.jp}</div>
-                            <div className="exEn">{ex.en}</div>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
                   </li>
                 ))}
               </ol>
+              <Link to={`/word/${entry.id}`} className="viewDetailLink">
+                View examples & details →
+              </Link>
             </section>
           </article>
         );
