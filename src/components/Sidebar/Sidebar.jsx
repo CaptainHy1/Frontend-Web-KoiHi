@@ -79,19 +79,6 @@ function Sidebar() {
           </li>
           <li>
             <NavLink
-              to="/japanese-name"
-              className={({ isActive }) =>
-                `menu-item ${isActive ? "active" : ""}`
-              }
-            >
-              <div className="icon-wrapper">
-                <FaUser />
-              </div>
-              <span>Tên tiếng Nhật</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/introduce"
               className={({ isActive }) =>
                 `menu-item ${isActive ? "active" : ""}`
