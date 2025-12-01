@@ -148,8 +148,8 @@ export default function SettingPage() {
 
       <div style={styles.container}>
         <div style={styles.header}>
-          <h2 style={styles.title}>Cài đặt tài khoản</h2>
-          <p style={styles.subtitle}>Quản lý thông tin cá nhân và bảo mật</p>
+          <h2 style={styles.title}>Account settings</h2>
+          <p style={styles.subtitle}>Personal information management and security</p>
         </div>
 
         {/* --- Thông báo --- */}
@@ -172,10 +172,10 @@ export default function SettingPage() {
         <div style={styles.grid}>
           {/* ===== Form update info ===== */}
           <div style={styles.card}>
-            <h3 style={styles.cardTitle}>Thông tin cá nhân</h3>
+            <h3 style={styles.cardTitle}>Personal information</h3>
             <form onSubmit={handleInfoSubmit} style={styles.form}>
               <div style={styles.formGroup}>
-                <label style={styles.label}>Tên đăng nhập</label>
+                <label style={styles.label}>Username</label>
                 <input
                   className="input-field"
                   type="text"
@@ -184,7 +184,7 @@ export default function SettingPage() {
                   onChange={handleInfoChange}
                   required
                   style={styles.input}
-                  placeholder="Nhập username"
+                  placeholder="username input..."
                 />
               </div>
 
@@ -198,7 +198,7 @@ export default function SettingPage() {
                   onChange={handleInfoChange}
                   required
                   style={styles.input}
-                  placeholder="Nhập email"
+                  placeholder="email input..."
                 />
               </div>
 
@@ -208,17 +208,17 @@ export default function SettingPage() {
                 className="btn-primary"
                 style={{ ...styles.button, opacity: savingInfo ? 0.7 : 1 }}
               >
-                {savingInfo ? "Đang lưu..." : "Cập nhật thông tin"}
+                {savingInfo ? "Saving..." : "Update Information"}
               </button>
             </form>
           </div>
 
           {/* ===== Form change password ===== */}
           <div style={styles.card}>
-            <h3 style={styles.cardTitle}>Bảo mật</h3>
+            <h3 style={styles.cardTitle}>Security</h3>
             <form onSubmit={handlePassSubmit} style={styles.form}>
               <div style={styles.formGroup}>
-                <label style={styles.label}>Mật khẩu hiện tại</label>
+                <label style={styles.label}>Current Password</label>
                 <input
                   className="input-field"
                   type="password"
@@ -232,7 +232,7 @@ export default function SettingPage() {
               </div>
 
               <div style={styles.formGroup}>
-                <label style={styles.label}>Mật khẩu mới</label>
+                <label style={styles.label}>New Password</label>
                 <input
                   className="input-field"
                   type="password"
@@ -251,7 +251,7 @@ export default function SettingPage() {
                 className="btn-primary"
                 style={{ ...styles.button, opacity: changingPass ? 0.7 : 1 }}
               >
-                {changingPass ? "Đang xử lý..." : "Đổi mật khẩu"}
+                {changingPass ? "Processing..." : "Change Password"}
               </button>
             </form>
           </div>

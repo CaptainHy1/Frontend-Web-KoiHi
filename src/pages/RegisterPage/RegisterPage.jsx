@@ -15,9 +15,9 @@ import "./RegisterPage.css";
 const API_BASE = import.meta?.env?.VITE_API_BASE || "http://127.0.0.1:8888";
 
 export default function RegisterPage() {
-  const [fullName, setFullName] = useState(""); // Họ và tên
-  const [username, setUsername] = useState(""); // BẮT BUỘC theo bảng
-  const [email, setEmail] = useState(""); // TÙY CHỌN (blank được)
+  const [fullName, setFullName] = useState(""); // Full name
+  const [username, setUsername] = useState(""); // Required
+  const [email, setEmail] = useState(""); // Required
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -43,28 +43,21 @@ export default function RegisterPage() {
     e.preventDefault();
     setServerErr("");
 
-    if (!fullName || !username || !password || !confirmPassword) {
+    if (!fullName || !username || !email || !password || !confirmPassword) {
       return setServerErr("Please fill in all required fields (*).");
     }
-    if (password.length < 6) {
-      return setServerErr("Password must be at least 6 characters.");
+    if (password.length < 8) {
+      return setServerErr("Password must be at least 8 characters.");
     }
     if (password !== confirmPassword) {
       return setServerErr("Passwords do not match!");
     }
 
-    // Tách họ tên (đơn giản)
-    const [first_name, ...rest] = fullName.trim().split(" ");
-    const last_name = rest.join(" ");
-
-    // Khớp serializer/back-end: username (bắt buộc), email (optional), role default 'user'
+    // API payload: username, email (required), password
     const payload = {
-      username, // <- BẮT BUỘC, unique
-      email: email || "", // <- Có thể rỗng
+      username,
+      email,
       password,
-      first_name,
-      last_name,
-      role: "user", // <- choices: user/admin, default 'user'
     };
 
     try {
@@ -82,8 +75,9 @@ export default function RegisterPage() {
         let msg = `${res.status} ${res.statusText}`;
         try {
           msg = extractErrorMsg(await res.json()) || msg;
-        } catch {}
-        throw new Error(msg);
+        } catch {
+          throw new Error(msg);
+        }
       }
 
       // Tuỳ backend: có thể trả { user, access, refresh }.
@@ -111,21 +105,6 @@ export default function RegisterPage() {
           <p className="brand-subtitle">Register to start your journey</p>
         </div>
 
-        {/* Social (placeholder) */}
-        <div className="social-login">
-          <button type="button" className="social-btn google">
-            <FaGoogle />
-            <span>Sign up with Google</span>
-          </button>
-          <button type="button" className="social-btn apple">
-            <FaApple />
-            <span>Sign up with Apple</span>
-          </button>
-        </div>
-
-        <div className="divider">
-          <span>or</span>
-        </div>
 
         {/* Error */}
         {serverErr && <div className="server-error">{serverErr}</div>}
@@ -165,22 +144,23 @@ export default function RegisterPage() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Email (optional)</label>
+            <label className="form-label">Email *</label>
             <div className="input-group">
               <FaEnvelope className="input-icon" />
               <input
                 type="email"
-                placeholder="example@gmail.com (can be left empty)"
+                placeholder="example@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="form-input"
                 autoComplete="email"
+                required
               />
             </div>
           </div>
 
           <div className="form-group">
-            <label className="form-label">Password *</label>
+            <label className="form-label">Password * (min 8 characters)</label>
             <div className="input-group">
               <FaLock className="input-icon" />
               <input
@@ -190,7 +170,7 @@ export default function RegisterPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="form-input"
                 autoComplete="new-password"
-                minLength={6}
+                minLength={8}
                 required
               />
               <button
@@ -215,7 +195,7 @@ export default function RegisterPage() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="form-input"
                 autoComplete="new-password"
-                minLength={6}
+                minLength={8}
                 required
               />
               <button

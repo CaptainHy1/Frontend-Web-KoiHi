@@ -36,7 +36,7 @@ export default function TextTranslator() {
       } else {
         setError("Could not translate");
       }
-    } catch (err) {
+    } catch {
       setError("Connection error to server");
     } finally {
       setLoading(false);

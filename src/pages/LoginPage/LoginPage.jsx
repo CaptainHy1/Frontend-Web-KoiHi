@@ -114,21 +114,6 @@ export default function LoginPage() {
           <p>Login to continue</p>
         </div>
 
-        <div className="social-login">
-          <button type="button" className="social-btn google">
-            <FaGoogle />
-            <span>Continue with Google</span>
-          </button>
-          <button type="button" className="social-btn apple">
-            <FaApple />
-            <span>Continue with Apple</span>
-          </button>
-        </div>
-
-        <div className="divider">
-          <span>or</span>
-        </div>
-
         <form onSubmit={handleSubmit} className="login-form" noValidate>
           <label>Username</label>
           <div className="input-group">
@@ -167,7 +152,7 @@ export default function LoginPage() {
             <label>
               <input type="checkbox" /> Remember me
             </label>
-            <Link to="/login">Forgot password?</Link>
+            <Link to="/forgot-password">Forgot password?</Link>
           </div>
 
           <button type="submit" disabled={loading}>
