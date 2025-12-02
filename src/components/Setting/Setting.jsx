@@ -11,13 +11,13 @@ export default function SettingPage() {
   const [savingInfo, setSavingInfo] = useState(false);
   const [changingPass, setChangingPass] = useState(false);
 
-  // Thêm state type để phân biệt màu sắc thông báo (success/error)
+  // Add state type to distinguish notification color (success/error)
   const [message, setMessage] = useState({ text: "", type: "" });
 
-  // 🔹 Helper để hiển thị thông báo
+  // 🔹 Helper to display notification
   const showMessage = (text, type = "success") => {
     setMessage({ text, type });
-    // Tự động ẩn sau 3s
+    // Auto hide after 3s
     setTimeout(() => setMessage({ text: "", type: "" }), 3000);
   };
 
@@ -42,7 +42,7 @@ export default function SettingPage() {
         setInfoForm({ username: data.username, email: data.email });
       })
       .catch((err) => {
-        console.error("❌ Lỗi fetch user:", err);
+        console.error("❌ Error fetching user:", err);
         setUser(null);
       })
       .finally(() => setLoading(false));
@@ -62,7 +62,7 @@ export default function SettingPage() {
   const handleInfoSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("access");
-    if (!token) return showMessage("Chưa đăng nhập", "error");
+    if (!token) return showMessage("Not logged in", "error");
 
     setSavingInfo(true);
     setMessage({ text: "", type: "" });
@@ -77,12 +77,15 @@ export default function SettingPage() {
     })
       .then((res) => res.json())
       .then((data) => {
-        showMessage(data.detail || "Cập nhật thông tin thành công!", "success");
+        showMessage(
+          data.detail || "Information updated successfully!",
+          "success"
+        );
         fetchUser();
       })
       .catch((err) => {
-        console.error("❌ Lỗi update info:", err);
-        showMessage("Cập nhật thất bại, vui lòng thử lại.", "error");
+        console.error("❌ Error updating info:", err);
+        showMessage("Update failed, please try again.", "error");
       })
       .finally(() => setSavingInfo(false));
   };
@@ -91,7 +94,7 @@ export default function SettingPage() {
   const handlePassSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("access");
-    if (!token) return showMessage("Chưa đăng nhập", "error");
+    if (!token) return showMessage("Not logged in", "error");
 
     setChangingPass(true);
     setMessage({ text: "", type: "" });
@@ -106,12 +109,12 @@ export default function SettingPage() {
     })
       .then((res) => res.json())
       .then((data) => {
-        showMessage(data.detail || "Đổi mật khẩu thành công!", "success");
+        showMessage(data.detail || "Password changed successfully!", "success");
         setPassForm({ old_password: "", new_password: "" });
       })
       .catch((err) => {
-        console.error("❌ Lỗi đổi mật khẩu:", err);
-        showMessage("Đổi mật khẩu thất bại.", "error");
+        console.error("❌ Error changing password:", err);
+        showMessage("Password change failed.", "error");
       })
       .finally(() => setChangingPass(false));
   };
@@ -120,9 +123,7 @@ export default function SettingPage() {
     return (
       <div style={styles.loadingContainer}>
         <div className="spinner"></div>
-        <p style={{ marginTop: "10px", color: "#0056b3" }}>
-          Đang tải dữ liệu...
-        </p>
+        <p style={{ marginTop: "10px", color: "#0056b3" }}>Loading data...</p>
         {/* CSS Spinner inline */}
         <style>{`.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; } @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
       </div>
@@ -130,9 +131,7 @@ export default function SettingPage() {
 
   if (!user)
     return (
-      <div style={styles.errorContainer}>
-        Vui lòng đăng nhập để xem trang này.
-      </div>
+      <div style={styles.errorContainer}>Please log in to view this page.</div>
     );
 
   return (
@@ -149,10 +148,12 @@ export default function SettingPage() {
       <div style={styles.container}>
         <div style={styles.header}>
           <h2 style={styles.title}>Account settings</h2>
-          <p style={styles.subtitle}>Personal information management and security</p>
+          <p style={styles.subtitle}>
+            Personal information management and security
+          </p>
         </div>
 
-        {/* --- Thông báo --- */}
+        {/* --- Notification --- */}
         {message.text && (
           <div
             style={{
@@ -184,7 +185,7 @@ export default function SettingPage() {
                   onChange={handleInfoChange}
                   required
                   style={styles.input}
-                  placeholder="username input..."
+                  placeholder="Enter username..."
                 />
               </div>
 
@@ -198,7 +199,7 @@ export default function SettingPage() {
                   onChange={handleInfoChange}
                   required
                   style={styles.input}
-                  placeholder="email input..."
+                  placeholder="Enter email..."
                 />
               </div>
 
@@ -264,7 +265,7 @@ export default function SettingPage() {
 // 🔹 Styles Object (CSS-in-JS lite)
 const styles = {
   pageBackground: {
-    backgroundColor: "#f0f4f8", // Màu nền xám xanh nhạt dịu mắt
+    backgroundColor: "#f0f4f8", // Soft light blue-gray background
     minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
@@ -295,7 +296,7 @@ const styles = {
     textAlign: "center",
   },
   title: {
-    color: "#003366", // Xanh dương đậm
+    color: "#003366", // Deep blue
     margin: "0 0 10px 0",
     fontSize: "28px",
     fontWeight: "700",
@@ -314,7 +315,7 @@ const styles = {
     backgroundColor: "#ffffff",
     borderRadius: "12px",
     padding: "30px",
-    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)", // Đổ bóng mềm mại
+    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)", // Soft shadow
     display: "flex",
     flexDirection: "column",
   },
@@ -345,12 +346,12 @@ const styles = {
     width: "100%",
     padding: "12px 15px",
     borderRadius: "8px",
-    border: "1px solid #dbeafe", // Viền xanh nhạt
+    border: "1px solid #dbeafe", // Light blue border
     backgroundColor: "#f8fafc",
     fontSize: "14px",
     color: "#333",
     transition: "all 0.3s ease",
-    boxSizing: "border-box", // Quan trọng để padding không làm vỡ layout
+    boxSizing: "border-box", // Important so padding doesn't break layout
   },
   button: {
     marginTop: "auto", // Đẩy nút xuống dưới cùng
