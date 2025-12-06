@@ -2,7 +2,7 @@
 import React from "react";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Flashcard from "../../components/Flashcard/Flashcards"; // chỉnh lại nếu tên file khác
+import Flashcard from "../../components/FlashCard/Flashcards"; // chỉnh lại nếu tên file khác
 
 const pageStyle = {
   display: "flex",
