@@ -1,5 +1,6 @@
 // src/components/History/History.jsx
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "../../config";
 
 export default function History({ reloadSignal }) {
   const [history, setHistory] = useState([]);
@@ -13,7 +14,7 @@ export default function History({ reloadSignal }) {
       return;
     }
 
-    fetch("http://127.0.0.1:8888/api/history/", {
+    fetch(`${API_BASE}/api/history/`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
