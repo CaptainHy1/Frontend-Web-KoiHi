@@ -9,9 +9,8 @@ import {
   FaApple,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config";
 import "./LoginPage.css";
-
-const API_BASE = import.meta?.env?.VITE_API_BASE || "http://127.0.0.1:8888"; // đổi về đúng port BE
 
 export default function LoginPage() {
   const [emailOrUsername, setEmailOrUsername] = useState(""); // nhập username hoặc email (nếu bạn map email -> username)

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE } from "../../config";
 import "./Translate.css";
 
 export default function TextTranslator() {
@@ -19,7 +20,7 @@ export default function TextTranslator() {
     setError("");
 
     try {
-      const res = await fetch("http://127.0.0.1:8888/api/translate/", {
+      const res = await fetch(`${API_BASE}/api/translate/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

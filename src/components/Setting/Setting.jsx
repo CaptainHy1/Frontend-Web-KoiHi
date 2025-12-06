@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "../../config";
 
 export default function SettingPage() {
   const [user, setUser] = useState(null);
@@ -30,7 +31,7 @@ export default function SettingPage() {
       return;
     }
 
-    fetch("http://127.0.0.1:8888/api/auth/me/", {
+    fetch(`${API_BASE}/api/auth/me/`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -67,7 +68,7 @@ export default function SettingPage() {
     setSavingInfo(true);
     setMessage({ text: "", type: "" });
 
-    fetch("http://127.0.0.1:8888/api/auth/update/", {
+    fetch(`${API_BASE}/api/auth/update/`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -96,7 +97,7 @@ export default function SettingPage() {
     setChangingPass(true);
     setMessage({ text: "", type: "" });
 
-    fetch("http://127.0.0.1:8888/api/auth/change-password/", {
+    fetch(`${API_BASE}/api/auth/change-password/`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
